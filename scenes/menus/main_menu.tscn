@@ -147,8 +147,11 @@ text = "Salir
 [node name="creditos_popup" type="ColorRect" parent="Camera3D/main_menu_ui"]
 visible = false
 layout_mode = 1
-offset_right = 1150.0
-offset_bottom = 650.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1120.0
+offset_bottom = 610.0
 color = Color(0, 0, 0, 0.952941)
 
 [node name="titulo" type="Label" parent="Camera3D/main_menu_ui/creditos_popup"]
@@ -192,9 +195,73 @@ theme_override_font_sizes/font_size = 30
 text = "Salir
 "
 
+[node name="opciones_popup" type="ColorRect" parent="Camera3D/main_menu_ui"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1120.0
+offset_bottom = 610.0
+color = Color(0, 0, 0, 0.952941)
+metadata/_edit_use_anchors_ = true
+
+[node name="titulo" type="Label" parent="Camera3D/main_menu_ui/opciones_popup"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 100.0
+offset_right = 121.0
+offset_bottom = 117.0
+scale = Vector2(2.29971, 1.4309)
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 40
+text = "Opciones"
+
+[node name="opciones_back" type="Button" parent="Camera3D/main_menu_ui/opciones_popup"]
+offset_left = 38.0
+offset_top = 569.0
+offset_right = 121.0
+offset_bottom = 608.0
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 30
+text = "Salir
+"
+
+[node name="opcion_sonido" type="HBoxContainer" parent="Camera3D/main_menu_ui/opciones_popup"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 289.0
+offset_right = 102.0
+offset_bottom = 329.0
+
+[node name="Label" type="Label" parent="Camera3D/main_menu_ui/opciones_popup/opcion_sonido"]
+layout_mode = 2
+text = "Sound: "
+
+[node name="opcion_sonido_on" type="Button" parent="Camera3D/main_menu_ui/opciones_popup/opcion_sonido"]
+layout_mode = 2
+text = "Si"
+
+[node name="opcion_fullscreen" type="HBoxContainer" parent="Camera3D/main_menu_ui/opciones_popup"]
+offset_left = 60.0
+offset_top = 348.0
+offset_right = 153.0
+offset_bottom = 388.0
+
+[node name="Label" type="Label" parent="Camera3D/main_menu_ui/opciones_popup/opcion_fullscreen"]
+layout_mode = 2
+text = "Pantalla Completa: "
+
+[node name="opcion_pantalla_completa" type="Button" parent="Camera3D/main_menu_ui/opciones_popup/opcion_fullscreen"]
+layout_mode = 2
+text = "Activado
+"
+
 [connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Nuevo Juego" to="Camera3D/main_menu_ui" method="_on_nuevo_juego_pressed"]
 [connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Continuar" to="Camera3D/main_menu_ui" method="_on_continuar_pressed"]
 [connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Opciones" to="Camera3D/main_menu_ui" method="_on_opciones_pressed"]
 [connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Creditos" to="Camera3D/main_menu_ui" method="_on_creditos_pressed"]
 [connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Salir" to="Camera3D/main_menu_ui" method="_on_salir_pressed"]
 [connection signal="pressed" from="Camera3D/main_menu_ui/creditos_popup/creditos_back" to="Camera3D/main_menu_ui" method="_on_creditos_back_pressed"]
+[connection signal="pressed" from="Camera3D/main_menu_ui/opciones_popup/opciones_back" to="Camera3D/main_menu_ui" method="_on_opciones_back_pressed"]
+[connection signal="pressed" from="Camera3D/main_menu_ui/opciones_popup/opcion_fullscreen/opcion_pantalla_completa" to="Camera3D/main_menu_ui" method="_on_opcion_pantalla_completa_pressed"]
