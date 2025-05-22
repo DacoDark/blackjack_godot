@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkrf7f8bqon2s"]
+[gd_scene load_steps=12 format=3 uid="uid://bkrf7f8bqon2s"]
 
 [ext_resource type="Script" uid="uid://csq11b7ru7ap" path="res://scripts/menu/turn_table.gd" id="1_ng0o5"]
 [ext_resource type="PackedScene" uid="uid://chvnmx1cp7ffv" path="res://assets/models/chips_fixed/Black_chip.tscn" id="1_ovrgc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b6md4e44ft2vm" path="res://assets/models/chips_fixed/Blue_chip.tscn" id="2_8r73w"]
 [ext_resource type="PackedScene" uid="uid://b5yq5kehgme6g" path="res://assets/models/chips_fixed/Red_chip.tscn" id="3_6bivr"]
 [ext_resource type="PackedScene" uid="uid://b4mg53xm2q51n" path="res://assets/models/chips_fixed/White_chip.tscn" id="6_1hnlc"]
+[ext_resource type="Script" uid="uid://bigot0ox8ox7e" path="res://scripts/menu/main_menu_ui.gd" id="7_1hnlc"]
 [ext_resource type="FontFile" uid="uid://dm8bh0fd63n4w" path="res://assets/models/fonts/LuckiestGuy-Regular.ttf" id="7_8r73w"]
 
 [sub_resource type="Environment" id="Environment_50h1w"]
@@ -83,13 +84,14 @@ transform = Transform3D(195.126, 1.91824e-06, -43.8841, 43.8841, -8.52923e-06, 1
 transform = Transform3D(1, 0, 0, 0, 0.660775, 0.750584, 0, -0.750584, 0.660775, -0.65946, 0.847126, 0.878335)
 fov = 75.2165
 
-[node name="Control" type="Control" parent="Camera3D"]
+[node name="main_menu_ui" type="Control" parent="Camera3D"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("7_1hnlc")
 
-[node name="Titulo" type="Label" parent="Camera3D/Control"]
+[node name="Titulo" type="Label" parent="Camera3D/main_menu_ui"]
 layout_mode = 1
 offset_left = 67.0
 offset_top = 124.0
@@ -100,7 +102,7 @@ theme_override_fonts/font = ExtResource("7_8r73w")
 theme_override_font_sizes/font_size = 58
 text = "BlackJack"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/Control"]
+[node name="main_menu_buttons" type="VBoxContainer" parent="Camera3D/main_menu_ui"]
 layout_mode = 0
 offset_left = 66.0
 offset_top = 267.0
@@ -108,36 +110,91 @@ offset_right = 175.0
 offset_bottom = 500.0
 theme_override_constants/separation = 27
 
-[node name="Nuevo Juego" type="Button" parent="Camera3D/Control/VBoxContainer"]
+[node name="Nuevo Juego" type="Button" parent="Camera3D/main_menu_ui/main_menu_buttons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_8r73w")
 theme_override_font_sizes/font_size = 30
 text = "Nuevo Juego"
 
-[node name="Continuar" type="Button" parent="Camera3D/Control/VBoxContainer"]
+[node name="Continuar" type="Button" parent="Camera3D/main_menu_ui/main_menu_buttons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_8r73w")
 theme_override_font_sizes/font_size = 30
 text = "Continuar
 "
 
-[node name="Opciones" type="Button" parent="Camera3D/Control/VBoxContainer"]
+[node name="Opciones" type="Button" parent="Camera3D/main_menu_ui/main_menu_buttons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_8r73w")
 theme_override_font_sizes/font_size = 30
 text = "Opciones
 "
 
-[node name="Creditos" type="Button" parent="Camera3D/Control/VBoxContainer"]
+[node name="Creditos" type="Button" parent="Camera3D/main_menu_ui/main_menu_buttons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_8r73w")
 theme_override_font_sizes/font_size = 30
 text = "Creditos
 "
 
-[node name="Salir" type="Button" parent="Camera3D/Control/VBoxContainer"]
+[node name="Salir" type="Button" parent="Camera3D/main_menu_ui/main_menu_buttons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_8r73w")
 theme_override_font_sizes/font_size = 30
 text = "Salir
 "
+
+[node name="creditos_popup" type="ColorRect" parent="Camera3D/main_menu_ui"]
+visible = false
+layout_mode = 1
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.952941)
+
+[node name="titulo" type="Label" parent="Camera3D/main_menu_ui/creditos_popup"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 100.0
+offset_right = 121.0
+offset_bottom = 117.0
+scale = Vector2(2.29971, 1.4309)
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 40
+text = "Creditos"
+
+[node name="Label" type="Label" parent="Camera3D/main_menu_ui/creditos_popup"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 337.0
+offset_right = 780.0
+offset_bottom = 382.0
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 20
+text = "Este juego de blackjack es creado con el proposito de aprender
+las buenas practicas de crear videojuegos como solo game development"
+
+[node name="Label2" type="Label" parent="Camera3D/main_menu_ui/creditos_popup"]
+offset_left = 51.0
+offset_top = 407.0
+offset_right = 353.0
+offset_bottom = 436.0
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 20
+text = "Desarrollado: dacoDark"
+
+[node name="creditos_back" type="Button" parent="Camera3D/main_menu_ui/creditos_popup"]
+offset_left = 38.0
+offset_top = 569.0
+offset_right = 121.0
+offset_bottom = 608.0
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 30
+text = "Salir
+"
+
+[connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Nuevo Juego" to="Camera3D/main_menu_ui" method="_on_nuevo_juego_pressed"]
+[connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Continuar" to="Camera3D/main_menu_ui" method="_on_continuar_pressed"]
+[connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Opciones" to="Camera3D/main_menu_ui" method="_on_opciones_pressed"]
+[connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Creditos" to="Camera3D/main_menu_ui" method="_on_creditos_pressed"]
+[connection signal="pressed" from="Camera3D/main_menu_ui/main_menu_buttons/Salir" to="Camera3D/main_menu_ui" method="_on_salir_pressed"]
+[connection signal="pressed" from="Camera3D/main_menu_ui/creditos_popup/creditos_back" to="Camera3D/main_menu_ui" method="_on_creditos_back_pressed"]
