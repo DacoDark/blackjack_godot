@@ -1,0 +1,143 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkrf7f8bqon2s"]
+
+[ext_resource type="Script" uid="uid://csq11b7ru7ap" path="res://scripts/menu/turn_table.gd" id="1_ng0o5"]
+[ext_resource type="PackedScene" uid="uid://chvnmx1cp7ffv" path="res://assets/models/chips_fixed/Black_chip.tscn" id="1_ovrgc"]
+[ext_resource type="PackedScene" uid="uid://b5spk008csctc" path="res://assets/models/chips_fixed/Green_chip.tscn" id="2_2o76q"]
+[ext_resource type="PackedScene" uid="uid://b6md4e44ft2vm" path="res://assets/models/chips_fixed/Blue_chip.tscn" id="2_8r73w"]
+[ext_resource type="PackedScene" uid="uid://b5yq5kehgme6g" path="res://assets/models/chips_fixed/Red_chip.tscn" id="3_6bivr"]
+[ext_resource type="PackedScene" uid="uid://b4mg53xm2q51n" path="res://assets/models/chips_fixed/White_chip.tscn" id="6_1hnlc"]
+[ext_resource type="FontFile" uid="uid://dm8bh0fd63n4w" path="res://assets/models/fonts/LuckiestGuy-Regular.ttf" id="7_8r73w"]
+
+[sub_resource type="Environment" id="Environment_50h1w"]
+background_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bivr"]
+albedo_color = Color(0.117647, 0.352941, 0.109804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_imvie"]
+material = SubResource("StandardMaterial3D_6bivr")
+size = Vector3(1000, 0, 1000)
+
+[node name="main_menu" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_50h1w")
+
+[node name="background" type="Node3D" parent="."]
+
+[node name="table" type="MeshInstance3D" parent="background"]
+transform = Transform3D(0.999803, 0, -0.0198256, 0, 1, 0, 0.0198256, 0, 0.999803, -0.00788086, -0.025484, 0)
+mesh = SubResource("BoxMesh_imvie")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="background"]
+transform = Transform3D(0.99988, 0.00499878, -0.014688, 0.0146927, -0.000905812, 0.999892, 0.00498494, -0.999987, -0.000979149, -0.101746, 3.00267, -0.191731)
+light_energy = 6.333
+spot_range = 3.88595
+spot_angle = 21.8285
+
+[node name="chips" type="Node3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00474632, 0, 0)
+script = ExtResource("1_ng0o5")
+
+[node name="Chip_063" parent="background/chips" instance=ExtResource("2_8r73w")]
+transform = Transform3D(200, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, -0.580341, 0, 0.15871)
+
+[node name="chips_black" type="Node3D" parent="background/chips"]
+
+[node name="Chip_062" parent="background/chips/chips_black" instance=ExtResource("1_ovrgc")]
+transform = Transform3D(200, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, -0.0714216, 0, -0.255646)
+
+[node name="Chip_061" parent="background/chips/chips_black" instance=ExtResource("1_ovrgc")]
+transform = Transform3D(200, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, -0.0714216, 0.0384955, -0.250091)
+
+[node name="Chip_063" parent="background/chips/chips_black" instance=ExtResource("1_ovrgc")]
+transform = Transform3D(200, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, -0.0730161, 0.0795009, -0.255646)
+
+[node name="Chip_064" parent="background/chips/chips_black" instance=ExtResource("1_ovrgc")]
+transform = Transform3D(170.42, 4.5755e-06, -104.675, 104.675, -7.44931e-06, 170.42, 0, -200, -8.74228e-06, -0.320515, 0.110306, -0.285091)
+
+[node name="chips_red" type="Node3D" parent="background/chips"]
+
+[node name="Chip_064" parent="background/chips/chips_red" instance=ExtResource("3_6bivr")]
+transform = Transform3D(200, 0, 0, 0, 40.988, 195.755, 0, -195.755, 40.988, 0.492808, 0.0715281, -0.203768)
+
+[node name="Chip_066" parent="background/chips/chips_red" instance=ExtResource("3_6bivr")]
+transform = Transform3D(200, 0, 0, 0, 44.0441, 195.09, 0, -195.09, 44.0441, 0.501437, 0.11274, -0.196516)
+
+[node name="Chip_067" parent="background/chips/chips_red" instance=ExtResource("3_6bivr")]
+transform = Transform3D(200, -6.21658e-08, 2.38419e-07, 2.38199e-07, -23.3862, 198.628, -1.58543e-08, -198.628, -23.3862, 0.492808, 0.0108743, -0.421298)
+
+[node name="Chip_068" parent="background/chips/chips_red" instance=ExtResource("3_6bivr")]
+transform = Transform3D(200, -6.21658e-08, 2.38419e-07, 2.38419e-07, -8.76188e-06, 200, 1.21072e-08, -200, -8.74698e-06, 0.492808, -0.00457332, 0.0162625)
+
+[node name="Chip_069" parent="background/chips/chips_red" instance=ExtResource("3_6bivr")]
+transform = Transform3D(200, 0, 0, 0, 44.0441, 195.09, 0, -195.09, 44.0441, 0.501437, 0.150827, -0.187329)
+
+[node name="Chip_065" parent="background/chips" instance=ExtResource("2_2o76q")]
+transform = Transform3D(200, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, -0.0714216, -0.00197406, 0.295851)
+
+[node name="Chip_062" parent="background/chips" instance=ExtResource("6_1hnlc")]
+transform = Transform3D(195.126, 1.91824e-06, -43.8841, 43.8841, -8.52923e-06, 195.126, 0, -200, -8.74228e-06, -0.762593, 0.0466036, 0.153869)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.660775, 0.750584, 0, -0.750584, 0.660775, -0.65946, 0.847126, 0.878335)
+fov = 75.2165
+
+[node name="Control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Titulo" type="Label" parent="Camera3D/Control"]
+layout_mode = 1
+offset_left = 67.0
+offset_top = 124.0
+offset_right = 381.0
+offset_bottom = 183.0
+scale = Vector2(1.61994, 1.70269)
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 58
+text = "BlackJack"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 267.0
+offset_right = 175.0
+offset_bottom = 500.0
+theme_override_constants/separation = 27
+
+[node name="Nuevo Juego" type="Button" parent="Camera3D/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 30
+text = "Nuevo Juego"
+
+[node name="Continuar" type="Button" parent="Camera3D/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 30
+text = "Continuar
+"
+
+[node name="Opciones" type="Button" parent="Camera3D/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 30
+text = "Opciones
+"
+
+[node name="Creditos" type="Button" parent="Camera3D/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 30
+text = "Creditos
+"
+
+[node name="Salir" type="Button" parent="Camera3D/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_8r73w")
+theme_override_font_sizes/font_size = 30
+text = "Salir
+"
